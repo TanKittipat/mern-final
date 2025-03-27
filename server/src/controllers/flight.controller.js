@@ -42,6 +42,9 @@ export const getAllFlights = async (req, res) => {
 // Get a single flight by ID
 export const getFlightById = async (req, res) => {
   try {
+    if (req.params.id) {
+      return res.status(400).json({ message: "Please provide flight Id!" });
+    }
     const flight = await flightModel.findById(req.params.id);
     if (!flight) {
       return res.status(404).json({ message: "Flight not found" });
@@ -55,14 +58,10 @@ export const getFlightById = async (req, res) => {
 // Update a flight by ID
 export const updateFlight = async (req, res) => {
   try {
-    const updatedFlight = await flightModel.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
-    if (!updatedFlight) {
-      return res.status(404).json({ message: "Flight not found" });
+    if (req.params.id) {
+      return res.status(400).json({ message: "Please provide flight Id!" });
     }
+    const flight = await flightModel.findById(req.params.id);
     res.status(200).json(updatedFlight);
   } catch (error) {
     res.status(400).json({ error: error.message });
