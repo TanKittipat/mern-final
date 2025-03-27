@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json());
-app.use(cors({ origin: process.env.BaseUrl }));
+app.use(cors({ origin: process.env.BaseUrl, credentials: true }));
 
 app.use("/api/auth", UserRoute);
 
