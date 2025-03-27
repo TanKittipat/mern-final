@@ -27,7 +27,7 @@ const SignUp = () => {
     }
   }, []);
   return (
-    <div className="hero bg-orange-200 min-h-[92.5vh]">
+    <div className="hero bg-orange-300 min-h-[92.5vh]">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
           <h3 className="card-title">Register a new User!</h3>
